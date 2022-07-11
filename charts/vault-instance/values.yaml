@@ -1,5 +1,11 @@
 bankVaultsImage: banzaicloud/bank-vaults:1.15.3
 
+env:
+  VAULT_LOG_LEVEL: "debug"
+  VAULT_STORAGE_FILE: "/vault/file"
+  SKIP_CHOWN: "true"
+  #SKIP_SETCAP: "true"
+
 existingTlsSecretName: ""
 
 image: vault:1.10.3

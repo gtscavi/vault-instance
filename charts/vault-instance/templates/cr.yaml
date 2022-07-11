@@ -216,14 +216,10 @@ spec:
         mountPath: /dir
 
   vaultEnvsConfig:
-    - name: VAULT_LOG_LEVEL
-      value: debug
-    - name: VAULT_STORAGE_FILE
-      value: "/vault/file"
-    - name: SKIP_CHOWN
-      value: "true"
-    - name: SKIP_SETCAP
-      value: "true"
+{{- range $pkey, $pval := .Values.env }}
+    - name: {{ $pkey }}
+      value: {{ quote $pval }}
+{{- end }}
 
   # Marks presence of Istio, which influences things like port namings
   istioEnabled: {{ .Values.istio.enabled }}
