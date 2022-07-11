@@ -203,11 +203,27 @@ spec:
             MYSQL_ROOT_PASSWORD: s3cr3t
             MYSQL_PASSWORD: 3xtr3ms3cr3t
 
+  vaultInitContainers:
+    - name: permissions-setup
+      image: busybox
+      command:
+        - /bin/sh
+        - -c
+        - |
+          chown 100:1000 /dir/*
+      volumeMounts:
+      - name: vault-config
+        mountPath: /dir
+
   vaultEnvsConfig:
     - name: VAULT_LOG_LEVEL
       value: debug
     - name: VAULT_STORAGE_FILE
       value: "/vault/file"
+    - name: SKIP_CHOWN
+      value: "true"
+    - name: SKIP_SETCAP
+      value: "true"
 
   # Marks presence of Istio, which influences things like port namings
   istioEnabled: {{ .Values.istio.enabled }}
