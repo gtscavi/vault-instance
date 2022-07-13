@@ -88,9 +88,9 @@ spec:
 
   # Use local disk to store Vault file data, see config section.
   volumes:
-    - name: vault-file
+    - name: vault-raft
       persistentVolumeClaim:
-        claimName: vault-file
+        claimName: vault-raft
 
   volumeClaimTemplates:
     - metadata:
@@ -106,7 +106,7 @@ spec:
             storage: 1Gi
 
   volumeMounts:
-    - name: vault-file
+    - name: vault-raft
       mountPath: /vault/file
 
   # Support for distributing the generated CA certificate Secret to other namespaces.
