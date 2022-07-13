@@ -126,7 +126,11 @@ spec:
     api_addr: https://vault.jx-vault:8200
     cluster_addr: "https://${.Env.POD_NAME}:8201"
 
-  # See: https://github.com/banzaicloud/bank-vaults#example-external-vault-configuration for more details.
+  statsdDisabled: true
+
+  serviceRegistrationEnabled: true
+  
+    # See: https://github.com/banzaicloud/bank-vaults#example-external-vault-configuration for more details.
   externalConfig:
     policies:
       - name: allow_secrets
