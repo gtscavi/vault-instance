@@ -111,7 +111,7 @@ spec:
   # See https://www.vaultproject.io/docs/configuration/ for more information.
   config:
     storage:
-      file:
+      raft:
         path: "${ .Env.VAULT_STORAGE_FILE }" # An example how Vault config environment interpolation can be used
     listener:
       tcp:
@@ -123,6 +123,8 @@ spec:
     telemetry:
       statsd_address: localhost:9125
     ui: true
+    api_addr: https://vault:8200
+    cluster_addr: "https://${.Env.POD_NAME}:8201"
 
   # See: https://github.com/banzaicloud/bank-vaults#example-external-vault-configuration for more details.
   externalConfig:
