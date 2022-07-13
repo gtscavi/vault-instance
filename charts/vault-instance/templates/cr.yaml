@@ -123,7 +123,7 @@ spec:
     telemetry:
       statsd_address: localhost:9125
     ui: true
-    api_addr: https://vault:8200
+    api_addr: https://vault.jx-vault:8200
     cluster_addr: "https://${.Env.POD_NAME}:8201"
 
   # See: https://github.com/banzaicloud/bank-vaults#example-external-vault-configuration for more details.
