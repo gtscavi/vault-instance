@@ -87,10 +87,10 @@ spec:
 {{- end }}
 
   # Use local disk to store Vault file data, see config section.
-  #volumes:
-  #  - name: vault-file
-  #    persistentVolumeClaim:
-  #      claimName: vault-file
+  volumes:
+    - name: vault-file
+      persistentVolumeClaim:
+        claimName: vault-file
 
   volumeClaimTemplates:
     - metadata:
