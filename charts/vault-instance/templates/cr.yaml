@@ -97,13 +97,13 @@ spec:
         name: vault-raft
       spec:
         # https://kubernetes.io/docs/concepts/storage/persistent-volumes/#class-1
-        storageClassName: "nfs-client"
+        storageClassName: "{{ .Values.pvc.size  }}"
         accessModes:
           - ReadWriteOnce
         volumeMode: Filesystem
         resources:
           requests:
-            storage: 1Gi
+            storage: {{ .Values.pvc.size }}
 
   volumeMounts:
     - name: vault-raft
@@ -131,13 +131,6 @@ spec:
       raft:
         node_id: "${.Env.POD_NAME}"
         path: "${ .Env.VAULT_STORAGE_FILE }" # An example how Vault config environment interpolation can be used
-        autopilot:
-          cleanup_dead_servers: "true"
-          last_contact_threshold: "200ms"
-          last_contact_failure_threshold: "10m"
-          max_trailing_logs: 250000
-          min_quorum: 5
-          server_stabilization_time: "10s"
     listener:
       tcp:
         address: "0.0.0.0:8200"
@@ -146,7 +139,7 @@ spec:
         tls_cert_file: /vault/tls/server.crt
         tls_key_file: /vault/tls/server.key
     ui: true
-    api_addr: https://vault.default:8200
+    api_addr: "https://${.Env.POD_NAME}.jx-vault:8200"
     cluster_addr: "https://${.Env.POD_NAME}:8201"
 
   statsdDisabled: true
