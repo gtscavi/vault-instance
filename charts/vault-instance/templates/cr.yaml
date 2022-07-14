@@ -120,6 +120,7 @@ spec:
       # The preFlightChecks flag enables unseal and root token storage tests
       # This is true by default
       preFlightChecks: true
+      storeRootToken: true
     kubernetes:
       secretNamespace: {{ .Release.Namespace }}
 
@@ -145,7 +146,7 @@ spec:
         tls_cert_file: /vault/tls/server.crt
         tls_key_file: /vault/tls/server.key
     ui: true
-    api_addr: https://vault.jx-vault:8200
+    api_addr: https://vault.default:8200
     cluster_addr: "https://${.Env.POD_NAME}:8201"
 
   statsdDisabled: true
