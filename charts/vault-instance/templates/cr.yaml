@@ -129,28 +129,28 @@ spec:
     storage:
       raft:
         path: "${ .Env.VAULT_STORAGE_FILE }" # An example how Vault config environment interpolation can be used
-      retry_join:
-        leader_api_addr: "https://vault-0.jx-vault:8200"
-        leader_ca_cert_file: "/vault/tls/ca.crt"
-        leader_client_cert_file: "/vault/tls/server.crt"
-        leader_client_key_file: "/vault/tls/server.key"
-      retry_join:
-        leader_api_addr: "https://vault-1.jx-vault:8200"
-        leader_ca_cert_file: "/vault/tls/ca.crt"
-        leader_client_cert_file: "/vault/tls/server.crt"
-        leader_client_key_file: "/vault/tls/server.key"
-      retry_join:
-        leader_api_addr: "https://vault-2.jx-vault:8200"
-        leader_ca_cert_file: "/vault/tls/ca.crt"
-        leader_client_cert_file: "/vault/tls/server.crt"
-        leader_client_key_file: "/vault/tls/server.key"
-      autopilot:
-        cleanup_dead_servers: "true"
-        last_contact_threshold: "200ms"
-        last_contact_failure_threshold: "10m"
-        max_trailing_logs: 250000
-        min_quorum: 5
-        server_stabilization_time: "10s"
+        retry_join:
+          leader_api_addr: "https://vault-0.jx-vault:8200"
+          leader_ca_cert_file: "/vault/tls/ca.crt"
+          leader_client_cert_file: "/vault/tls/server.crt"
+          leader_client_key_file: "/vault/tls/server.key"
+        retry_join:
+          leader_api_addr: "https://vault-1.jx-vault:8200"
+          leader_ca_cert_file: "/vault/tls/ca.crt"
+          leader_client_cert_file: "/vault/tls/server.crt"
+          leader_client_key_file: "/vault/tls/server.key"
+        retry_join:
+          leader_api_addr: "https://vault-2.jx-vault:8200"
+          leader_ca_cert_file: "/vault/tls/ca.crt"
+          leader_client_cert_file: "/vault/tls/server.crt"
+          leader_client_key_file: "/vault/tls/server.key"
+        autopilot:
+          cleanup_dead_servers: "true"
+          last_contact_threshold: "200ms"
+          last_contact_failure_threshold: "10m"
+          max_trailing_logs: 250000
+          min_quorum: 5
+          server_stabilization_time: "10s"
     listener:
       tcp:
         address: "0.0.0.0:8200"
