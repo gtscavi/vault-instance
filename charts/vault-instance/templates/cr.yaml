@@ -128,6 +128,7 @@ spec:
   config:
     storage:
       raft:
+        node_id: "${.Env.POD_NAME}"
         path: "${ .Env.VAULT_STORAGE_FILE }" # An example how Vault config environment interpolation can be used
         autopilot:
           cleanup_dead_servers: "true"
